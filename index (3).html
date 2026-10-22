@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>อาคารสำนักงาน อบต.บ้านโคก | AR 3 มิติ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Sarabun,sans-serif;background:#0f2a1d;color:#fff}
+header{padding:16px;text-align:center;background:linear-gradient(#14532d,#0f2a1d)}
+h1{margin:0;font-size:1.35rem}header p{margin:4px 0 0;opacity:.8;font-size:.95rem}
+model-viewer{width:100%;height:68vh;background:radial-gradient(#e8efe9,#b9c9bd);--poster-color:transparent}
+.ar-btn{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#16a34a;color:#fff;border:0;border-radius:30px;padding:14px 26px;font:700 1.05rem Sarabun;box-shadow:0 4px 14px #0006}
+.prog{position:absolute;top:0;left:0;height:4px;background:#16a34a;width:0;transition:width .2s}
+.info{padding:14px 16px;font-size:.95rem;line-height:1.6;max-width:640px;margin:auto}
+.info b{color:#86efac}
+footer{text-align:center;font-size:.8rem;opacity:.6;padding:10px 0 18px}
+</style>
+</head>
+<body>
+<header><h1>อาคารสำนักงาน อบต.บ้านโคก</h1><p>อาคาร คสล. 2 ชั้น · โมเดล 3 มิติ / AR</p></header>
+<model-viewer id="mv" src="obt_office.glb" ios-src="obt_office.usdz" alt="อาคารสำนักงาน อบต.บ้านโคก"
+ ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor"
+ camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1" exposure="1.05"
+ camera-orbit="35deg 70deg auto">
+ <div class="prog" slot="progress-bar" id="pb"></div>
+ <button slot="ar-button" class="ar-btn">📱 ดูในพื้นที่จริง (AR)</button>
+</model-viewer>
+<div class="info">
+ <b>วิธีใช้:</b> ใช้นิ้วหมุน/ซูมดูโมเดล กดปุ่ม <b>ดูในพื้นที่จริง</b> แล้วส่องกล้องไปที่พื้น อาคารจะปรากฏในพื้นที่จริง ใช้สองนิ้วย่อ/ขยายได้<br>
+ <b>iPhone:</b> เปิดด้วย Safari · <b>Android:</b> เปิดด้วย Chrome (ต้องมี Google Play Services for AR)
+</div>
+<footer>พัฒนาโดย นายวสันต์ วรสีนา</footer>
+<script>
+document.getElementById('mv').addEventListener('progress',e=>{const p=e.detail.totalProgress;const b=document.getElementById('pb');b.style.width=p*100+'%';if(p===1)setTimeout(()=>b.style.display='none',300)});
+</script>
+</body>
+</html>
